@@ -1,4 +1,4 @@
-FROM rhel7:latest
+FROM centos:7
 
 MAINTAINER Kenneth D. Evensen <kevensen@redhat.com>
 
@@ -8,12 +8,8 @@ ENV GOROOT=/opt/go
 ENV PATH=$PATH:/opt/go/bin:$GOBIN
 
 RUN yum clean all && \
-    yum update -y --disablerepo='*' \
-                  --enablerepo='rhel-7-server-rpms' && \
+    yum update -y && \
     yum install -y --setopt=tsflags=nodocs \
-                   --disablerepo='*' \
-                   --enablerepo='rhel-7-server-rpms' \
-                   --enablerepo='rhel-7-server-optional-rpms' \
                    git-bzr \
                    bzr \
                    tar && \
